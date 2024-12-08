@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="img/wickedicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <title>Wicked</title>
+
+    <style>
+header {
+    background-size: cover;
+    background-position: center;
+}
+ /* Styling the mute button */
+ #mute-btn {
+        position: absolute;
+        bottom: 20px;  /* Position it at the bottom of the video */
+        right: 20px;   /* Position it at the right of the video */
+        background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+        color: white; /* White text color */
+        border: none; /* Remove border */
+        padding: 10px 20px; /* Padding for the button */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s ease; /* Smooth background color transition */
+    }
+
+    /* Change button color when hovered */
+    #mute-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8); /* Darker shade on hover */
+    }
+.hero-section {
+  height: 130vh;
+  background: linear-gradient(135deg, #ff1f6d, #2fa233);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carousel {
+  height: 500px;
+}
+
+.carousel img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+
+.carousel .carousel-item {
+  height: 100%;
+  width: 30%;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 0;
+    padding-top: 100px;
+}
+
+#bg-video {
+    width: 100%;
+    height: 60%;
+    display: block;
+    margin-top: 10;
+    object-fit: cover; /* Ensures the video covers the container */
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Ensures the navigation stays above the video */
+    margin-bottom: 20px;
+}
+
+.white-text {
+    margin-top: 0%;
+}
+
+.nav-wrapper {
+    background-color: #141313; /* Solid black background */
+    padding: 20px 0; /* Increase top and bottom padding */
+    margin-bottom: 50px; /* Spacing below the navbar */
+    height: auto; /* Adjust height dynamically */
+    display: flex;
+    align-items: center;
+}
+
+.section {
+            padding-top: 4vw;
+            padding-bottom: 4vw;
+}
+
+.section {
+    padding: 2rem 1rem; /* Adjust padding for the entire section */
+    background: linear-gradient(to bottom, pink 0%, #ff1f6d 40%, #ff1f6d 50%, green);
+    background-size: cover;
+}
+.section1 {
+    padding: 2rem 1rem; /* Adjust padding for the entire section */
+    background: linear-gradient(to bottom, green 0%,  #2fa233 40%, #2fa233 50%, #000000 100%);
+    background-size: cover;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.8; /* Improve readability */
+}
+
+.social-icons a:hover {
+    color: #ff1f6d;
+}
+
+.footer {
+    background: url(img/black2.png);
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the background image covers the entire footer */
+    background-position: center; /* Centers the background image */
+    padding: 60px 20px; /* Adds consistent padding */
+}
+
+.footer-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 60px 10px;
+}
+
+.spotify-embed,
+.email-signup,
+.social-icons1 {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%; 
+    margin: 0 2.5%; 
+}
+
+.spotify-embed iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+}
+
+.email-signup {
+    text-align: left;
+    padding: 30px 0;
+}
+
+.email-signup h3 {
+    text-align: left;
+    color: white;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.email-signup form {
+    display: block;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.email-signup input[type="email"] {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 200px;
+    background-color: white;
+}
+
+.social-icons1 {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.social-icons1 a {
+    margin: 0 10px;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+.social-icons1 a:hover {
+    color: #ff1f6d;
+}
+
+.email-signup button {
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: #ff1f6d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.1em;
+    width: fit-content;
+    text-transform: capitalize;
+}
+
+.email-signup button:hover {
+    background-color: #2fa233;
+}
+
+.footer p {
+    margin-top: 20px;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+}
+
+#about {
+    text-align: right;
+    text-align: center;
+    font-size: 1.0rem;
+    color: white;
+    line-height: 1.5;
+    padding: 20px 0;
+}
+.container {
+    max-width: 100%;
+}
+
+.section1 p,
+.section p{
+    text-align: justify;
+}
+.bullet li {
+    padding-left: 30px; /* Indentation for bullets */
+    text-align: justify;
+}
+
+.title {
+    font-size: 20px;
+    font-style: bold;
+    margin: 0;
+}
+.brand-logo img {
+  width: 180px;
+  height: 70px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px; /* Optional: Adds space between images */
+    padding-bottom: 20px; /* Optional: Adds padding at the bottom */
+}
+
+.scroll-item {
+    flex-shrink: 0;
+}
+.scroll-container {
+  display: flex; 
+  overflow-x: auto; 
+  scroll-behavior: smooth; 
+  white-space: nowrap; 
+  gap: 15px; 
+  padding: 10px 30px;
+  transition: transform 0.3s ease-in-out; 
+  max-width: 95%;
+  margin: 0 auto; 
+
+}
+
+.scroll-item {
+  flex: 0 0 auto; 
+  width: 300px; 
+  height: 400px; 
+  overflow: hidden; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease; 
+  margin-bottom: 10px;
+}
+
+.scroll-item img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.scroll-item:hover {
+  transform: scale(1.05); 
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 10px; 
+  width: 90%;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #ff1f6d; 
+  border-radius: 5px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #ccc; 
+}
+.social-icon {
+    margin: 0 10px;
+    font-size: 24px;
+    color: #000; /* Default color for icons */
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #1db954; /* Color change on hover (green for Spotify-like color) */
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .logo {
+        font-size: 1.5em;
+        align-items: center;
+        margin-bottom: 5px; 
+    }
+
+    .social-icons {
+        order: -1; 
+        margin-bottom: 0px;
+        justify-content: center; 
+        text-align: center; 
+    }
+
+    .nav-links {
+        flex-wrap: nowrap;
+        justify-content: center;
+        white-space: nowrap;
+        text-align: center; 
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .welcome {
+        text-align: center; 
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px;
+        text-align: center; 
+    }
+
+    .logo {
+        font-size: 1.2em;
+        text-align: center;
+        margin-bottom: 5px; 
+    }
+
+    .nav-links {
+        flex-wrap: nowrap;
+        justify-content: center;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .welcome {
+        text-align: center; 
+    }
+}
+
+@media (max-width: 768px) {
+    .spotify-embed,
+    .email-signup,
+    .social-icons1 {
+        display: block;
+        width: 100%; 
+        margin: 0; 
+        margin-bottom: 20px; 
+        box-sizing: border-box; 
+    }
+
+    .spotify-embed iframe {
+        width: 100%; 
+    }
+
+    .email-signup {
+        text-align: center; 
+    }
+    .hero-section {
+        padding: 30px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+
+    .hero-section p {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+
+    .hero-section .carousel {
+        margin-top: 10px;
+    }
+
+    .hero-section .carousel-item img {
+        max-height: 250px;
+    }
+
+    .cta-buttons .btn-large {
+        font-size: 1.1em;
+        padding: 10px 20px;
+    }
+
+    .parallax-container {
+        height: 300px;
+    }
+
+    .parallax {
+        background-size: cover;
+    }
+}
+
+@media (max-width: 480px) {
+    .spotify-embed,
+    .email-signup,
+    .social-icons1 {
+        display: block;
+        width: 100%; 
+        margin: 0; 
+        margin-bottom: 15px; 
+        box-sizing: border-box;
+    }
+
+    .spotify-embed iframe {
+        width: 100%; 
+        height: auto; 
+    }
+
+    .email-signup {
+        text-align: center; 
+    }
+
+    .social-icons1 {
+        display: flex; 
+        justify-content: center; 
+        gap: 10px;
+    }
+
+    .social-icons1 a {
+        display: inline-block; 
+    }
+    .hero-section {
+        padding: 20px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .hero-section .carousel {
+        margin-top: 10px;
+    }
+
+    .hero-section {
+        max-height: 200px;
+    }
+
+    .cta-buttons .btn-large {
+        font-size: 1em;
+        padding: 8px 15px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .parallax-container {
+        height: 250px;
+    }
+
+    .parallax {
+        background-size: cover;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 5px; 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .social-icons1 {
+        margin-bottom: 20px;
+        display: flex; 
+        flex-direction: row; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+    }
+
+    .social-icons1 a {
+        margin: 5px; 
+        font-size: 20px; 
+    }
+
+    .spotify-embed {
+        width: 100%; 
+        margin-bottom: 20px; 
+    }
+
+    iframe {
+        width: 100%; 
+        height: 80px; 
+    }
+
+    .email-signup {
+        width: 90%; 
+        margin: 0 auto; 
+    }
+
+    input[type="email"],
+    textarea {
+        width: 100%; 
+        margin-bottom: 10px; 
+        padding: 10px; 
+        font-size: 14px; 
+    }
+
+    button {
+        width: 100%; 
+        padding: 10px; 
+        font-size: 16px; 
+    }
+
+    .footer-container p {
+        font-size: 12px; 
+        line-height: 1.4; 
+    }
+
+    .email-signup h3 {
+        font-size: 16px; 
+        margin-bottom: 10px; 
+    }
+    .hero-section {
+        padding: 20px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .hero-section .carousel {
+        margin-top: 10px;
+    }
+
+    .hero-section {
+        max-height: 200px;
+    }
+
+    .cta-buttons .btn-large {
+        font-size: 1em;
+        padding: 8px 15px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .parallax-container {
+        height: 250px;
+    }
+
+    .parallax {
+        background-size: cover;
+    }
+}
+
+</style>
+
+
+    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+            <nav class="nav-wrapper z-depth-0">
+                <a href="index.html" class="brand-logo center">
+                    <img src="img/logo.png" alt="Logo" class="responsive-img">
+                  </a>
+          
+                <div class="container">
+                    <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="left hide-on-med-and-down">
+                        <li><a href="index.html" class="active" style="color: #ff1f6d; font-weight: bold; text-decoration: underline;">Home</a></li>
+                        <li><a href="store.html">Merchandise</a></li>
+                        <li><a href="soundtrack.html">Media</a></li>
+                    </ul>
+                        <ul class="right hide-on-med-and-down">
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="video-container">
+        <video autoplay loop id="bg-video">
+            <source src="img/trailer2.mp4" type="video/mp4">
+        </video>
+        <button id="mute-btn">Mute</button>
+    </div>
+
+<div class="hero-section">
+    <div class="container center-align">
+        <h1 class="white-text">Unlock your beauty: shine with the light or rule with the shadow, the choice is yours.</h1>
+        <p class="white-text flow-text">Discover Glinda’s radiant charm or Elphaba’s bold mystique.</p>
+        <div class="row">
+                <div class="carousel">
+                    <a class="carousel-item" href="#one!"><img src="img/one.jpg"></a>
+                    <a class="carousel-item" href="#two!"><img src="img/two2.jpg"></a>
+                    <a class="carousel-item" href="#three!"><img src="img/glinda1.jpg"></a>
+                    <a class="carousel-item" href="#four!"><img src="img/seven.jpg"></a>
+                    <a class="carousel-item" href="#five!"><img src="img/5five.jpg"></a>
+                </div>
+        </div>
+        <div class="cta-buttons">
+            <a href="#glinda" class="btn-large pink accent-3 z-depth-3 waves-effect waves-light">Are you ready to be Glindafied?</a>
+            <a href="#elphaba" class="btn-large green darken-3 z-depth-3 waves-effect waves-light">Explore Elphie’s Looks</a>
+        </div>
+    </div>
+</div>
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="img/parallax2.webp" alt="" class="responsive-img">
+    </div>
+ </div>
+
+ <section class="section">
+    <!-- Row 1 -->
+    <div class="row">
+        <div class="col s12 l4" id="glinda">
+            <img src="img/galinda.jpg" alt="Glinda Image" class="responsive-img materialboxed">
+        </div>
+        <div class="col s12 l6 offset-l1">
+            <a href="#"><h2 class="pink-text text-darken-5">Glinda</h2></a>
+            <p class="white-text">Glinda, as portrayed by Ariana Grande in the upcoming Wicked film, is a vibrant and charismatic character with a delightful blend of charm, ambition, and humor. Known for her effervescent personality and love for glamour, Glinda is the "good witch" who contrasts sharply with Elphaba’s darker, more introspective nature.</p>
+            <p class="title pink-text text-darken-4">Personality:</p>
+            <ul class="bullet">
+                <li class="white-text"><strong class="pink-text text-darken-4">Cheerful and Bubbly:</strong> Glinda is the quintessential "popular girl," exuding confidence and an infectious sense of joy. She revels in the spotlight and often seeks admiration from those around her.</li>
+                <li class="white-text"><strong class="pink-text text-darken-4">Kind-Hearted but Naive:</strong> While she means well, Glinda’s good intentions can sometimes be overshadowed by her vanity and lack of awareness of deeper issues.</li>
+                <li class="white-text"><strong class="pink-text text-darken-4">Ambitious and Driven:</strong> Beneath her cheerful demeanor, she’s determined to succeed and maintain her position as a beloved figure in society.</li>
+              </ul>
+              <p class="title pink-text text-darken-4">Style and Appearance:</p>
+            <ul class="bullet">
+                <li class="white-text"><strong class="pink-text text-darken-4">Glamorous and Elegant:</strong> Glinda’s style reflects her love for all things beautiful and sparkly. Ariana Grande’s portrayal likely amplifies this with stunning costumes, such as glittering gowns, intricate hairstyles, and iconic accessories (like her wand).</li>
+                <li class="white-text"><strong class="pink-text text-darken-4">Kind-Hearted but Naive:</strong> While she means well, Glinda’s good intentions can sometimes be overshadowed by her vanity and lack of awareness of deeper issues.</li>
+              </ul>
+        </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+        <div class="col s12 l4 push-l7 offset-l1">
+            <img src="img/galinda2.jpg" alt="Glinda image" class="responsive-img materialboxed">
+        </div>
+        <div class="col s12 l6 pull-l4 right-align">
+            <p class="white-text">Glinda’s journey in Wicked is one of self-awareness. While she starts as a seemingly superficial character, her experiences with Elphaba challenge her to see beyond appearances and grow into a more compassionate and understanding person. <br> <br> Ariana Grande's performance is anticipated to highlight Glinda's humor and charisma while showcasing the emotional depth of her transformation throughout the story. Fans are especially excited to hear her tackle iconic songs like "Popular" and "Thank Goodness", bringing her unique vocal prowess and personality to the role.</p>
+        </div>
+    </div> <br><br>
+    
+    <!-- Row 3 -->
+    <section class="childhood">
+        <div class="scroll-container">
+            <div class="scroll-item"><img src="img/index13.jpg" alt="Image 1"></div>
+            <div class="scroll-item"><img src="img/index12.jpg" alt="Image 2"></div>
+            <div class="scroll-item"><img src="img/index3.jpg" alt="Image 3"></div>
+            <div class="scroll-item"><img src="img/index5.jpg" alt="Image 4"></div>
+            <div class="scroll-item"><img src="img/index14.jpg" alt="Image 5"></div>
+            <div class="scroll-item"><img src="img/index6.jpg" alt="Image 6"></div>
+            <div class="scroll-item"><img src="img/index4.jpg" alt="Image 7"></div>
+            <div class="scroll-item"><img src="img/index7.jpg" alt="Image 8"></div>
+            <div class="scroll-item"><img src="img/index15.jpg" alt="Image 9"></div>
+            <div class="scroll-item"><img src="img/index10.jpg" alt="Image 10"></div>
+        </div>
+    </section>
+    
+</section>
+
+<section class="section1">
+    <!-- Row 1 -->
+    <div class="row">
+        <div class="col s12 l4 push-l7 offset-l1" id="elphaba">
+            <img src="img/elphaba.jpg" alt="Elphaba" class="responsive-img materialboxed">
+        </div>
+        <div class="col s12 l6 pull-l4 right-align">
+            <a href="#"><h2 class="green-text text-accent-1">Elphaba</h2></a>
+            <p class="white-text">Elphaba, the central character in Wicked, is a multifaceted figure of resilience, intelligence, and unyielding morality. Her journey reflects her transformation from a misunderstood outcast to a powerful symbol of individuality and strength. Born with green skin, she faces constant prejudice, which shapes her compassionate yet guarded personality. Fiercely intelligent and quick-witted, she excels in sorcery and academics while standing firm against societal injustice. Elphaba's defiance of authority and refusal to conform make her both a rebel and a deeply empathetic protector of those she loves. Despite her strong exterior, she is vulnerable, harboring insecurities about her appearance and a longing for acceptance. These complexities make her a compelling and inspiring character.</p>
+            <p class="title green-text text-accent-1">Characteristics:</p>
+            <ul class="bullet">
+                <li class="white-text"><strong class="green-text text-accent-2">Intelligent and Quick-Witted:</strong> Excels in sorcery and academics, often challenging conventional thinking.</li>
+                <li class="white-text"><strong class="green-text text-accent-2">Compassionate:</strong> Empathizes with the marginalized and fiercely protects her loved ones.</li>
+                <li class="white-text"><strong class="green-text text-accent-2">Resilient and Defiant:</strong> Faces prejudice with strength and challenges authority to fight for justice.</li>
+                <li class="white-text"><strong class="green-text text-accent-2">Vulnerable:</strong> Struggles with insecurities about her identity and desires acceptance.</li>
+                <li class="white-text"><strong class="green-text text-accent-2">Loyal and Passionate:</strong> Deeply devoted to her beliefs and the people she cares for, regardless of the cost.</li>
+              </ul>
+              <p class="title green-text text-accent-1">Defining Style:</p>
+            <ul class="bullet">
+                <li class="white-text"><strong class="geen-text text-accent-2">Evolving Wardrobe:</strong> From simple student attire to her iconic black hat and cape, her style mirrors her transformation.</li>
+                <li class="white-text"><strong class="geen-text text-accent-2">Authentic Simplicity:</strong> Avoids excessive glamour, emphasizing her grounded and genuine nature.</li>
+                <li class="white-text"><strong class="geen-text text-accent-2">Commanding Presence:</strong> Her final look—dark, dramatic, and witch-inspired—exudes confidence and power.</li>
+              </ul>
+        </div>
+    </div>
+     <!-- Row 2 -->
+    <div class="row">
+        <div class="col s12 l4">
+            <img src="img/elphaba1.jpg" alt="Portrait Image" class="responsive-img materialboxed">
+        </div>
+        <div class="col s12 l6 offset-l1">
+            <p class="white-text">Elphaba’s style evolves alongside her character development, serving as a visual representation of her journey. Initially, her wardrobe is simple and practical, reflecting her humble beginnings and focus on academics rather than appearances. As she grows into her power and embraces her individuality, her style transforms into something iconic and commanding. The dramatic black hat and cape she dons in the latter part of the story signify her acceptance of her identity and her role as a misunderstood yet empowered figure. Her aesthetic contrasts sharply with Glinda’s bright and glittering look, symbolizing the dichotomy between light and shadow, conformity and rebellion, and societal acceptance versus individuality. <br> <br> Through her story and transformation, Elphaba becomes a symbol of authenticity and resilience. She shows that true power comes from embracing who you are, even when it defies expectations. Her character resonates with anyone who has ever felt like an outsider, proving that staying true to one’s beliefs and identity can ultimately defy even the most entrenched labels. Elphaba is not just the "Wicked Witch of the West"—she is a testament to the strength found in individuality, the courage to challenge injustice, and the beauty of living unapologetically.</p>
+        </div>
+    </div>
+<br><br><br><br>
+</section>
+<footer class="footer center-align">
+    <div class="footer-container">
+        <div class="social-icons1">
+            <p id="about">
+                <strong>About This Website:</strong>
+                <br>
+                <br> Welcome to the Wicked Realms, an enchanted haven where the extraordinary worlds of Glinda and Elphaba collide! Here, you’ll discover the latest mystical news, spellbinding updates, and enchanting insights into their legendary tales and timeless adventures. Immerse yourself in captivating stories, explore their powerful songs, and stay in the loop on upcoming magical events and experiences.
+                <br> <br>Join us as we celebrate the bewitching journey of friendship, rivalry, and wonder, connecting with fellow fans and basking in the glow of Oz’s most iconic duo!
+            </p>
+            <a href="https://www.instagram.com/wickedmovie?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@universalpicturesuk?is_from_webapp=1&sender_device=pc" class="social-icon">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.facebook.com/wickedmovie/" class="social-icon">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://open.spotify.com/album/3JUrJP460nFIqwjxM19slT?si=StXllO6zQSGnZ507SwQBbg" class="social-icon">
+                <i class="fab fa-spotify"></i>
+            </a>
+            <a href="https://www.youtube.com/user/OfficialWICKED" class="social-icon">
+                <i class="fab fa-youtube"></i>
+            </a>
+            
+        </div>
+        <div class="spotify-embed" style="padding-top: 50px;">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3JUrJP460nFIqwjxM19slT?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="email-signup">
+            <h3>Sign up for updates:</h3>
+            <form action="#" method="post">
+                <input type="email" name="email" placeholder="Enter your email." required>
+                <textarea name="message" placeholder="Add message here."></textarea>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <p>&copy; 2024 Wicked Community | All rights reserved.</p>
+</footer>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/materialize.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+        $('.parallax').parallax();
+        $('.materialboxed').materialbox();
+        $(document).ready(function(){
+        $('.carousel').carousel();
+        const video = document.getElementById('bg-video');
+    const muteButton = document.getElementById('mute-btn');
+
+    muteButton.addEventListener('click', () => {
+        if (video.muted) {
+            video.muted = false;
+            muteButton.textContent = 'Mute';  // Change button text to 'Mute' when unmuted
+        } else {
+            video.muted = true;
+            muteButton.textContent = 'Unmute'; // Change button text to 'Unmute' when muted
+        }
+    });
+    });
+    });
+</script>
+
+
+
+
+
+
+
+</html>

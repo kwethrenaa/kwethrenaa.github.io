@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="img/wickedicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <title>Wicked</title>
+    <style>
+        header {
+    background-size: cover;
+    background-position: center;
+}
+.brand-logo img {
+  width: 180px;
+  height: 70px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Ensures the navigation stays above the video */
+    margin-bottom: 20px;
+}
+
+.white-text {
+    margin-top: 0%;
+}
+
+.nav-wrapper {
+    background-color: #141313; /* Solid black background */
+    padding: 20px 0; /* Increase top and bottom padding */
+    margin-bottom: 50px; /* Spacing below the navbar */
+    height: auto; /* Adjust height dynamically */
+    display: flex;
+    align-items: center;
+}
+        body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2 {
+    color: #fff;
+    background-color: #684883;
+    position: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+section{
+    padding: 20px;
+    width: 1280px;
+    margin:  auto;
+    margin-top: 50px;
+}
+
+section ul {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+section ul li {
+    list-style: none;
+    color: white;
+    padding: 8px 20px;
+    margin: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+section ul li:hover {
+    background-color: #fff;
+    color: pink;
+}
+
+section ul li.active {
+    color: #fff;
+    background-color: green;
+}
+
+img {
+
+    height: 300px;
+    width: 300px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gallery .itemBox {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    margin: 5px;
+}
+
+.gallery .itemBox img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+object-fit: cover;
+}
+
+.itemBox {
+    position: relative;
+    overflow: hidden;  /* Ensures that the zoomed image doesn't go outside its container */
+}
+
+.itemBox img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease; /* Smooth transition for the zoom effect */
+}
+
+.itemBox:hover img {
+    transform: scale(1.2);  /* Zooms in only the image, not the border */
+}
+
+.gallerybuttons {
+    padding-top: 100px;
+}
+
+.hero-section {
+  height: 670vh;
+  background: linear-gradient(135deg, #ff1f6d, #2fa233);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.social-icons a:hover {
+    color: #ff1f6d;
+}
+
+.footer {
+    background: url(img/black2.png);
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the background image covers the entire footer */
+    background-position: center; /* Centers the background image */
+    padding: 60px 20px; /* Adds consistent padding */
+}
+
+.footer-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 60px 10px;
+}
+
+.spotify-embed,
+.email-signup,
+.social-icons1 {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%; 
+    margin: 0 2.5%; 
+}
+
+.spotify-embed iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+}
+
+.email-signup {
+    text-align: left;
+    padding: 30px 0;
+}
+
+.email-signup h3 {
+    text-align: left;
+    color: white;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.email-signup form {
+    display: block;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.email-signup input[type="email"] {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 200px;
+    background-color: white;
+}
+
+.social-icons1 {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.social-icons1 a {
+    margin: 0 10px;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+.social-icons1 a:hover {
+    color: #ff1f6d;
+}
+
+.email-signup button {
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: #ff1f6d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.1em;
+    width: fit-content;
+    text-transform: capitalize;
+}
+
+.email-signup button:hover {
+    background-color: #2fa233;
+}
+
+.footer p {
+    margin-top: 20px;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+}
+
+#about {
+    text-align: right;
+    text-align: center;
+    font-size: 1.0rem;
+    color: white;
+    line-height: 1.5;
+    padding: 20px 0;
+}
+.galleryfooter {
+    margin: 0; /* Remove any margin around the gallery image */
+    padding: 0; /* Remove padding */
+}
+
+.full-width-image {
+    width: 100%; /* Make the image full width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures image is treated as a block element */
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .logo {
+        font-size: 1.5em;
+        align-items: center;
+        margin-bottom: 5px; 
+    }
+
+    .social-icons {
+        order: -1; 
+        margin-bottom: 0px;
+        justify-content: center; 
+        text-align: center; 
+    }
+
+    .nav-links {
+        flex-wrap: nowrap;
+        justify-content: center;
+        white-space: nowrap;
+        text-align: center; 
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .welcome {
+        text-align: center; 
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px;
+        text-align: center; 
+    }
+
+    .logo {
+        font-size: 1.2em;
+        text-align: center;
+        margin-bottom: 5px; 
+    }
+
+    .nav-links {
+        flex-wrap: nowrap;
+        justify-content: center;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .welcome {
+        text-align: center; 
+    }
+}
+
+@media (max-width: 768px) {
+    .spotify-embed,
+    .email-signup,
+    .social-icons1 {
+        display: block;
+        width: 100%; 
+        margin: 0; 
+        margin-bottom: 20px; 
+        box-sizing: border-box; 
+    }
+
+    .spotify-embed iframe {
+        width: 100%; 
+    }
+
+    .email-signup {
+        text-align: center; 
+    }
+}
+
+@media (max-width: 480px) {
+    .spotify-embed,
+    .email-signup,
+    .social-icons1 {
+        display: block;
+        width: 100%; 
+        margin: 0; 
+        margin-bottom: 15px; 
+        box-sizing: border-box;
+    }
+
+    .spotify-embed iframe {
+        width: 100%; 
+        height: auto; 
+    }
+
+    .email-signup {
+        text-align: center; 
+    }
+
+    .social-icons1 {
+        display: flex; 
+        justify-content: center; 
+        gap: 10px;
+    }
+
+    .social-icons1 a {
+        display: inline-block; 
+    }
+}
+
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 5px; 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .social-icons1 {
+        margin-bottom: 20px;
+        display: flex; 
+        flex-direction: row; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+    }
+
+    .social-icons1 a {
+        margin: 5px; 
+        font-size: 20px; 
+    }
+
+    .spotify-embed {
+        width: 100%; 
+        margin-bottom: 20px; 
+    }
+
+    iframe {
+        width: 100%; 
+        height: 80px; 
+    }
+
+    .email-signup {
+        width: 90%; 
+        margin: 0 auto; 
+    }
+
+    input[type="email"],
+    textarea {
+        width: 100%; 
+        margin-bottom: 10px; 
+        padding: 10px; 
+        font-size: 14px; 
+    }
+
+    button {
+        width: 100%; 
+        padding: 10px; 
+        font-size: 16px; 
+    }
+
+    .footer-container p {
+        font-size: 12px; 
+        line-height: 1.4; 
+    }
+
+    .email-signup h3 {
+        font-size: 16px; 
+        margin-bottom: 10px; 
+    }
+}
+@media screen and (max-width: 768px) {
+    .filter-buttons li {
+        flex: 1 1 100%;
+        margin: 5px 0;
+    }
+
+    .gallery-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .itemBox {
+        max-width: 80%;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .itemBox img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="nav-wrapper z-depth-0">
+            <a href="index.html" class="brand-logo center">
+                <img src="img/logo.png" alt="Logo" class="responsive-img">
+              </a>
+      
+            <div class="container">
+                <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="store.html">Merchandise</a></li>
+                    <li><a href="soundtrack.html">Media</a></li>
+                </ul>
+                    <ul class="right hide-on-med-and-down">
+                    <li><a href="gallery.html" class="active" style="color: #ff1f6d; font-weight: bold; text-decoration: underline;">Gallery</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="hero-section">
+              
+    <section class="gallerybuttons">
+              <ul>
+                <li class="item active" data-filter="all">All</li>
+                <li class="item" data-filter="glinda">Glinda</li>
+                <li class="item" data-filter="elphaba">Elphaba</li>
+                <li class="item" data-filter="duo">Duo</li>
+                <li class="item" data-filter="cast">Other Cast</li>
+                <li class="item" data-filter="acting">Acting</li>
+              </ul>
+
+            <!-- filter Images -->
+            <div class="gallery">
+                
+                <div class="itemBox glinda"> <img src="img/galleryglinda1.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba1.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo1.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast1.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox acting"> <img src="img/galleryacting1.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda2.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba2.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo2.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast2.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox acting"> <img src="img/galleryacting2.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda3.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba3.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo3.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast3.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox acting"> <img src="img/galleryacting3.jpg" class="responsive-img materialboxed""></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda4.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba4.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo4.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast4.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox acting"> <img src="img/galleryacting4.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda5.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba5.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo5.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast5.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox acting"> <img src="img/galleryacting5.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda6.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba6.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo6.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast6.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox acting"> <img src="img/galleryacting6.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda7.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba7.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo7.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast7.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox acting"> <img src="img/galleryacting7.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda8.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba8.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo8.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast8.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox acting"> <img src="img/galleryacting8.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda9.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba9.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo9.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast9.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda10 1.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba10.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo10.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast10.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda11.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba11.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo11.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast11.jpg" class="responsive-img materialboxed"></div>
+
+                <div class="itemBox glinda"> <img src="img/galleryglinda12.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox elphaba"> <img src="img/galleryelphaba12.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox duo"> <img src="img/galleryduo12.jpg" class="responsive-img materialboxed"></div>
+                <div class="itemBox cast"> <img src="img/gallerycast12.jpg" class="responsive-img materialboxed"></div>
+
+            </div>
+        </section>
+    </div>
+
+    <div class="galleryfooter">
+        <img src="img/galleryfooter.png" alt="Gallery Image" class="full-width-image">
+    </div>
+    <footer class="footer center-align">
+        <div class="footer-container">
+            <div class="social-icons1">
+                <p id="about">
+                    <strong>About This Website:</strong>
+                    <br>
+                    <br> Welcome to the Wicked Realms, an enchanted haven where the extraordinary worlds of Glinda and Elphaba collide! Here, you’ll discover the latest mystical news, spellbinding updates, and enchanting insights into their legendary tales and timeless adventures. Immerse yourself in captivating stories, explore their powerful songs, and stay in the loop on upcoming magical events and experiences.
+                    <br> <br>Join us as we celebrate the bewitching journey of friendship, rivalry, and wonder, connecting with fellow fans and basking in the glow of Oz’s most iconic duo!
+                </p>
+                <a href="https://www.instagram.com/wickedmovie?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@universalpicturesuk?is_from_webapp=1&sender_device=pc" class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.facebook.com/wickedmovie/" class="social-icon">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://open.spotify.com/album/3JUrJP460nFIqwjxM19slT?si=StXllO6zQSGnZ507SwQBbg" class="social-icon">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="https://www.youtube.com/user/OfficialWICKED" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                
+            </div>
+            <div class="spotify-embed" style="padding-top: 50px;">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3JUrJP460nFIqwjxM19slT?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="email-signup">
+                <h3>Sign up for updates:</h3>
+                <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Enter your email." required>
+                    <textarea name="message" placeholder="Add message here."></textarea>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+        <p>&copy; 2024 Wicked Community | All rights reserved.</p>
+    </footer>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/materialize.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.item').click(function() {
+            const value = $(this).attr('data-filter');
+
+            // Show all items if 'all' is selected
+            if (value === 'all') {
+                $('.itemBox').show(1000); // Show all items with animation
+            } else {
+                $('.itemBox').not('.' + value).hide(1000); // Hide items that do not match the filter
+                $('.itemBox').filter('.' + value).show(1000); // Show items that match the filter
+            }
+
+            // Add active class to the selected filter item
+            $('.item').removeClass('active'); // Remove active class from all
+            $(this).addClass('active'); // Add active class to the clicked item
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+        $('.materialboxed').materialbox();
+        $('.parallax').parallax();
+        $('.tabs').tabs();
+        $('.datepicker').datepicker({
+            disableweekends: true
+        });
+        $('.tooltipped').tooltip();
+        $('.scrollspy').scrollSpy();
+    });
+</script>
+
+
+
+
+
+
+</html>

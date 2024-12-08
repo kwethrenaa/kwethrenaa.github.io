@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="img/wickedicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <title>Wicked</title>
+
+    <style>
+header {
+    background-size: cover;
+    background-position: center;
+}
+ /* Styling the mute button */
+ #mute-btn {
+        position: absolute;
+        bottom: 20px;  /* Position it at the bottom of the video */
+        right: 20px;   /* Position it at the right of the video */
+        background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+        color: white; /* White text color */
+        border: none; /* Remove border */
+        padding: 10px 20px; /* Padding for the button */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s ease; /* Smooth background color transition */
+    }
+
+    /* Change button color when hovered */
+    #mute-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8); /* Darker shade on hover */
+    }
+
+.carousel-item img {
+    height: fit-content;
+    padding-top: 0%;
+}
+.carousel{
+    top: -50px;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 0;
+    padding-top: 100px;
+}
+
+#bg-video {
+    width: 100%;
+    height: 60%;
+    display: block;
+    margin-top: 10;
+    object-fit: cover; /* Ensures the video covers the container */
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Ensures the navigation stays above the video */
+    margin-bottom: 20px;
+}
+
+.white-text {
+    margin-top: 0%;
+}
+
+.nav-wrapper {
+    background-color: #141313; /* Solid black background */
+    padding: 20px 0; /* Increase top and bottom padding */
+    margin-bottom: 50px; /* Spacing below the navbar */
+    height: auto; /* Adjust height dynamically */
+    display: flex;
+    align-items: center;
+}
+
+.section {
+            padding-top: 4vw;
+            padding-bottom: 4vw;
+}
+
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.8; /* Improve readability */
+}
+
+.social-icons a:hover {
+    color: #ff1f6d;
+}
+
+.footer {
+    background: url(img/black2.png);
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the background image covers the entire footer */
+    background-position: center; /* Centers the background image */
+    padding: 60px 20px; /* Adds consistent padding */
+}
+
+.footer-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 60px 10px;
+}
+
+.spotify-embed,
+.email-signup,
+.social-icons1 {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%; 
+    margin: 0 2.5%; 
+}
+
+.spotify-embed iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+}
+
+.email-signup {
+    text-align: left;
+    padding: 30px 0;
+}
+
+.email-signup h3 {
+    text-align: left;
+    color: white;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.email-signup form {
+    display: block;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.email-signup input[type="email"] {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 200px;
+    background-color: white;
+}
+
+.social-icons1 {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.social-icons1 a {
+    margin: 0 10px;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+.social-icons1 a:hover {
+    color: #ff1f6d;
+}
+
+.email-signup button {
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: #ff1f6d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.1em;
+    width: fit-content;
+    text-transform: capitalize;
+}
+
+.email-signup button:hover {
+    background-color: #2fa233;
+}
+
+.footer p {
+    margin-top: 20px;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+}
+
+#about {
+    text-align: right;
+    text-align: center;
+    font-size: 1.0rem;
+    color: white;
+    line-height: 1.5;
+    padding: 20px 0;
+}
+.container {
+    max-width: 100%;
+}
+
+.section1 p,
+.section p{
+    text-align: justify;
+}
+.bullet li {
+    padding-left: 30px; /* Indentation for bullets */
+    text-align: justify;
+}
+
+.title {
+    font-size: 20px;
+    font-style: bold;
+    margin: 0;
+}
+.brand-logo img {
+  width: 180px;
+  height: 70px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.fan-club-section {
+    padding-top: 100px;
+}
+
+
+.video-container {
+        position: relative;
+        width: 100%;  /* Full width */
+        height: 100%; /* Full height */
+}
+
+#bg-video {
+    display: none; /* Hide the video */
+}
+#mute-btn {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for exact center */
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 9999; 
+    padding: 5px;
+}
+
+#mute-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+#mute-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .logo {
+        font-size: 1.5em;
+        align-items: center;
+        margin-bottom: 5px; 
+    }
+
+    .social-icons {
+        order: -1; 
+        margin-bottom: 0px;
+        justify-content: center; 
+        text-align: center; 
+    }
+
+    .nav-links {
+        flex-wrap: nowrap;
+        justify-content: center;
+        white-space: nowrap;
+        text-align: center; 
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .welcome {
+        text-align: center; 
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px;
+        text-align: center; 
+    }
+
+    .logo {
+        font-size: 1.2em;
+        text-align: center;
+        margin-bottom: 5px; 
+    }
+
+    .nav-links {
+        flex-wrap: nowrap;
+        justify-content: center;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .welcome {
+        text-align: center; 
+    }
+}
+
+@media (max-width: 768px) {
+    .spotify-embed,
+    .email-signup,
+    .social-icons1 {
+        display: block;
+        width: 100%; 
+        margin: 0; 
+        margin-bottom: 20px; 
+        box-sizing: border-box; 
+    }
+
+    .spotify-embed iframe {
+        width: 100%; 
+    }
+
+    .email-signup {
+        text-align: center; 
+    }
+}
+
+@media (max-width: 480px) {
+    .spotify-embed,
+    .email-signup,
+    .social-icons1 {
+        display: block;
+        width: 100%; 
+        margin: 0; 
+        margin-bottom: 15px; 
+        box-sizing: border-box;
+    }
+
+    .spotify-embed iframe {
+        width: 100%; 
+        height: auto; 
+    }
+
+    .email-signup {
+        text-align: center; 
+    }
+
+    .social-icons1 {
+        display: flex; 
+        justify-content: center; 
+        gap: 10px;
+    }
+
+    .social-icons1 a {
+        display: inline-block; 
+    }
+}
+
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 5px; 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .social-icons1 {
+        margin-bottom: 20px;
+        display: flex; 
+        flex-direction: row; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+    }
+
+    .social-icons1 a {
+        margin: 5px; 
+        font-size: 20px; 
+    }
+
+    .spotify-embed {
+        width: 100%; 
+        margin-bottom: 20px; 
+    }
+
+    iframe {
+        width: 100%; 
+        height: 80px; 
+    }
+
+    .email-signup {
+        width: 90%; 
+        margin: 0 auto; 
+    }
+
+    input[type="email"],
+    textarea {
+        width: 100%; 
+        margin-bottom: 10px; 
+        padding: 10px; 
+        font-size: 14px; 
+    }
+
+    button {
+        width: 100%; 
+        padding: 10px; 
+        font-size: 16px; 
+    }
+
+    .footer-container p {
+        font-size: 12px; 
+        line-height: 1.4; 
+    }
+
+    .email-signup h3 {
+        font-size: 16px; 
+        margin-bottom: 10px; 
+    }
+}
+
+
+</style>
+
+
+    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+            <nav class="nav-wrapper z-depth-0">
+                <a href="index.html" class="brand-logo center">
+                    <img src="img/logo.png" alt="Logo" class="responsive-img">
+                  </a>
+          
+                <div class="container">
+                    <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="left hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="store.html">Merchandise</a></li>
+                        <li><a href="soundtrack.html">Media</a></li>
+                    </ul>
+                        <ul class="right hide-on-med-and-down">
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contacts.html" class="active" style="color: #ff1f6d; font-weight: bold; text-decoration: underline;">Contacts</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="fan-club-section" style="background-color: #006400; color: white;">
+        <section style="position: relative; height: 600px;">
+            <img src="img/landscape.jpg" alt="Fan Club Icon" class="fan-club-image" style="width: 100%; height: 100%; object-fit: cover; margin-bottom: 0;">
+        </section>
+
+            <div class="video-container">
+                <video autoplay loop id="bg-video">
+                    <source src="img/defyinggravity.mp4" type="video/mp4">
+                </video>
+                <button id="mute-btn" onclick="toggleMute()">Mute</button>
+            </div>
+        
+        <h2 class="center-align" style="padding-top: 20px; padding-bottom: 20px; margin-top: 0;">Fan Club</h2>
+        <p class="center-align flow-text">Join the Wicked Fam to get exclusive updates, magical merchandise, and more from the world of Olivia's artistry!</p>
+        <br><br>
+    </section>
+    
+    
+    <section id="contact-details" class="contact-details" style="background-color: #006400; color: #006400; padding: 20px;">
+        <h2 class="center-align white-text">Contact Information</h2>
+        <table class="contact-table centered striped" style="color: white;">
+            <tr>
+                <th class="center-align">Type</th>
+                <th class="center-align">Details</th>
+                <th class="center-align">Mail</th>
+            </tr>
+            <tr>
+                <td>General Inquiries</td>
+                <td>Wicked Management</td>
+                <td>
+                    <a href="https://mail.google.com" target="_blank" class="infolink white-text">management@wickedrod.com</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Fan Support</td>
+                <td>Wicked Fanatics International</td>
+                <td>
+                    <a href="mailto:fansupport@wickedrod.com" target="_blank" class="infolink white-text">fansupport@wickedrod.com</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Media & Press Inquiries</td>
+                <td>Wicked Media Press</td>
+                <td>
+                    <a href="mailto:press@wickedrod.com" target="_blank" class="infolink white-text">press@wickedrod.com</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Booking Requests</td>
+                <td>OR Collaborations</td>
+                <td>
+                    <a href="mailto:booking@wickedrod.com" target="_blank" class="infolink white-text">booking@wickedrod.com</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Fan Mail</td>
+                <td>OR Public Mail</td>
+                <td>
+                    <a href="https://maps.app.goo.gl/Tt1wwRaPDFTCH84y8" target="_blank" class="infolink white-text">
+                        <strong>Lighthouse Management and Media, Inc.,</strong> 137 N Larchmont Blvd, Los Angeles, CA 90004, USA </a>
+                </td>
+            </tr>
+        </table>
+    </section>
+    
+    <section id="contact-form" class="contact-form" style="background: linear-gradient(to bottom, #006400, #000000 100%); padding: 40px;">
+        <h2 class="center-align white-text">Send Your Message</h2>
+        <p class="center-align flow-text white-text">Feel free to send a message to Olivia's team directly. We'd love to hear from you!</p>
+        <form action="#" method="post">
+            <div class="input-field">
+                <input type="text" id="name" name="name" placeholder="Enter your name." required>
+                <label for="name">Your Name</label>
+            </div>
+            <div class="input-field">
+                <input type="email" id="email" name="email" placeholder="Enter your email." required>
+                <label for="email">Your Email</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="subject" name="subject" placeholder="Enter subject." required>
+                <label for="subject">Subject</label>
+            </div>
+            <div class="input-field">
+                <textarea id="message" name="message" class="materialize-textarea" placeholder="Your Message" required></textarea>
+                <label for="message">Message</label>
+            </div>
+            <div class="center-align">
+                <button type="submit" class="btn green darken-2 waves-effect waves-light">Send Message</button>
+            </div>
+        </form>
+    </section>
+    
+        
+    <footer class="footer center-align">
+        <div class="footer-container">
+            <div class="social-icons1">
+                <p id="about">
+                    <strong>About This Website:</strong>
+                    <br>
+                    <br> Welcome to the Wicked Realms, an enchanted haven where the extraordinary worlds of Glinda and Elphaba collide! Here, you’ll discover the latest mystical news, spellbinding updates, and enchanting insights into their legendary tales and timeless adventures. Immerse yourself in captivating stories, explore their powerful songs, and stay in the loop on upcoming magical events and experiences.
+                    <br> <br>Join us as we celebrate the bewitching journey of friendship, rivalry, and wonder, connecting with fellow fans and basking in the glow of Oz’s most iconic duo!
+                </p>
+                <a href="https://www.instagram.com/wickedmovie?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@universalpicturesuk?is_from_webapp=1&sender_device=pc" class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.facebook.com/wickedmovie/" class="social-icon">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://open.spotify.com/album/3JUrJP460nFIqwjxM19slT?si=StXllO6zQSGnZ507SwQBbg" class="social-icon">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="https://www.youtube.com/user/OfficialWICKED" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                
+            </div>
+            <div class="spotify-embed" style="padding-top: 50px;">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/3JUrJP460nFIqwjxM19slT?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="email-signup">
+                <h3>Sign up for updates:</h3>
+                <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Enter your email." required>
+                    <textarea name="message" placeholder="Add message here."></textarea>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+        <p>&copy; 2024 Wicked Community | All rights reserved.</p>
+    </footer>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/materialize.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+        $('.parallax').parallax();
+        $('.materialboxed').materialbox();
+        $(document).ready(function(){
+        $('.carousel').carousel();
+        const video = document.getElementById('bg-video');
+    const muteButton = document.getElementById('mute-btn');
+
+    muteButton.addEventListener('click', () => {
+        if (video.muted) {
+            video.muted = false;
+            muteButton.textContent = 'Mute';  // Change button text to 'Mute' when unmuted
+        } else {
+            video.muted = true;
+            muteButton.textContent = 'Unmute'; // Change button text to 'Unmute' when muted
+        }
+    });
+    });
+    });
+    
+</script>
+
+
+
+
+
+
+
+</html>
